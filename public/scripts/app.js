@@ -93,8 +93,6 @@ function renderTweets(tweets) {
   });
 }
 
-renderTweets(data);
-
   $("i.fas.fa-heart").hide(1000);
   $("i.fas.fa-flag").hide(1000);
   $("i.fas.fa-retweet").hide(1000);
@@ -121,5 +119,12 @@ $(function() {
   });
 });
 
+function loadTweets() {
+  $.get('http://localhost:8080/tweets')
+  .then(tweets => {
+    renderTweets(tweets);
+  });
+}
+loadTweets();
 });
 
