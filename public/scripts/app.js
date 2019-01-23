@@ -111,5 +111,15 @@ renderTweets(data);
       $("i.fas.fa-retweet").hide(1000);
       });
 
+$(function() {
+  var submitTweet = $('#compose-tweet');
+  submitTweet.on('submit', function (event) {
+    event.preventDefault();
+    let newTweetData = $(this).serialize()
+    $.post('/tweets', newTweetData);
+    console.log('newTweetData: ', newTweetData);
+  });
+});
+
 });
 
