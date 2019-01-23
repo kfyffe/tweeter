@@ -27,6 +27,7 @@ body {
 }
 
 .tweet {
+  opacity: 0.33;
   border-radius: 10px;
   border-color: #CDD5D9;
   border-style: outset;
@@ -74,8 +75,28 @@ article.tweet span {
 }
 
 .hovertweet {
-  opacity: 0.33;
+  opacity: 1;
 }
+
+i.fas.fa-heart {
+  color: #00a087 ;
+  float:right;
+  padding: 5px;
+ }
+i.fas.fa-flag {
+  color: #00a087 ;
+  float:right;
+  padding: 5px;
+}
+i.fas.fa-retweet {
+  color: #00a087 ;
+  float:right;
+  padding: 5px;
+}
+
+
+
+
 
 
 
