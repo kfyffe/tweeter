@@ -26,6 +26,12 @@ body {
   background: white;
 }
 
+.tweet {
+  border-radius: 10px;
+  background: #eeeeee;
+  padding: 2em;
+}
+
 
 
 /*
