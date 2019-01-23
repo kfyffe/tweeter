@@ -28,8 +28,49 @@ body {
 
 .tweet {
   border-radius: 10px;
+  border-color: #CDD5D9;
+  border-style: outset;
   background: #eeeeee;
-  padding: 2em;
+  margin-top: 1em;
+}
+
+article.tweet header {
+  position: relative;
+  height: 50px;
+}
+
+article.tweet img {
+  float: left;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+article.tweet h1 {
+  float: left;
+}
+
+article.tweet h3 {
+  float: right;
+  color: #ABB2B9;
+  margin-right: 10px;
+}
+
+article.tweet p{
+  background: #ffffff;
+  position: relative;
+  padding: 1em;
+  height: 150px;
+  border-bottom-style: solid;
+  border-bottom-color: #CDD5D9;
+}
+
+article.tweet footer {
+  height: 25px;
+}
+
+article.tweet span {
+  float: left;
+  margin-left: 5px;
+  color: #ABB2B9;
 }
 
 
