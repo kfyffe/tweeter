@@ -71,7 +71,11 @@ function createTweetElement(tweetData) {
 
   //footer
   let postDate = $('<span>').text(tweetData.created_at); //variable for the date the tweet was posted
-  let tweetFooter = $('<footer>').append(postDate); //append the postDate variable to the footer
+  let heart = $('<i class="fas fa-heart"></i>');
+  let flag = $('<i class="fas fa-flag"></i>');
+  let retweet = $('<i class="fas fa-retweet"></i>');
+
+  let tweetFooter = $('<footer>').append(postDate).append(heart).append(flag).append(retweet); //append the postDate variable to the footer
 
   //article
   let $tweet = $('<article>').addClass("tweet").append(tweetHeader).append(tweetText).append(tweetFooter);
