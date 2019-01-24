@@ -12,8 +12,9 @@ function createTweetElement(tweetData) {
   let tweetText = $('<p>').text(tweetData.content.text);
   //footer
   let currentTime = Date.now();
-  console.log('Time elapsed is: ', currentTime - tweetData.created_at);
-  let postDate = $('<span>').text(tweetData.created_at); //variable for the date the tweet was posted
+  let timeElapsed = currentTime - tweetData.created_at;
+  console.log('Time elapsed is: ', timeElapsed);
+  let postDate = $('<span>').text(tweetTracker(timeElapsed)); //variable for the date the tweet was posted
   let heart = $('<i class="fas fa-heart"></i>');
   let flag = $('<i class="fas fa-flag"></i>');
   let retweet = $('<i class="fas fa-retweet"></i>');
@@ -41,6 +42,41 @@ function hoverTweets(tweets) {
       $(this).find("i.fas.fa-flag").hide(1000);
       $(this).find("i.fas.fa-retweet").hide(1000);
       });
+}
+
+function tweetTracker (timeElapsed) {
+  let tracker = timeElapsed / 1000;
+  let seconds = tracker + ' seconds ago';
+  let minute = 'one minute ago';
+  let minutes = Math.floor(tracker / 60) + ' minutes ago';
+  let hour = 'an hour ago';
+  let hours = Math.floor(tracker / 3600) + ' hours ago';
+  let day = 'one day ago';
+  let days = Math.floor(tracker / 86400) + ' days ago';
+  let week = 'one week ago';
+  let weeks = Math.floor(tracker / 604800) + ' weeks ago';
+  let years = 'over a year ago';
+  if (timeElapsed < 60) {
+    return seconds;
+  }else if (tracker === 60) {
+    return minute;
+  }else if (tracker > 60 && tracker < 3600) {
+    return minutes;
+  }else if (tracker >= 3600 && tracker <= 7199) {
+    return hour;
+  }else if (tracker >= 7200 && tracker < 86400) {
+    return hours;
+  }else if (tracker === 86400) {
+    return day;
+  }else if (tracker > 86400 &&  tracker < 604800) {
+    return days;
+  }else if (tracker === 604800) {
+    return week;
+  }else if (tracker > 604800 &&  tracker < 31536000) {
+    return weeks;
+  }else {
+    return years;
+  }
 }
 
 //function that renders the tweets and calls createTweetElement function
