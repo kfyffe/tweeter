@@ -65,8 +65,9 @@ function renderTweets(tweets) {
 $(".new-tweet").hide();
 $(".compose").on("click", function (){
 $(".new-tweet").slideToggle();
+$("#tweet-text").focus();
 })
-$(".tweet-text").focus();
+
 
 $(function() {
   var submitTweet = $('#compose-tweet');
