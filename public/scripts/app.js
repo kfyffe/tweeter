@@ -35,6 +35,25 @@ function createTweetElement(tweetData) {
   return $tweet;
 }
 
+function hoverTweets(tweets) {
+  $("i.fas.fa-heart").hide(1000);
+  $("i.fas.fa-flag").hide(1000);
+  $("i.fas.fa-retweet").hide(1000);
+
+  $(".tweet").hover(function () {
+    $(this).addClass("hovertweet");
+    $(this).find("i.fas.fa-heart").show(1000);
+    console.log('value of $this: ', $(this))
+    $(this).find("i.fas.fa-flag").show(1000);
+    $(this).find("i.fas.fa-retweet").show(1000);
+    }, function() {
+      $(this).removeClass("hovertweet");
+      $(this).find("i.fas.fa-heart").hide(1000);
+      $(this).find("i.fas.fa-flag").hide(1000);
+      $(this).find("i.fas.fa-retweet").hide(1000);
+      });
+}
+
 function renderTweets(tweets) {
   console.log('This is tweet: ', tweets);
   $(".tweet").remove();
@@ -46,21 +65,6 @@ function renderTweets(tweets) {
   });
 }
 
-  $("i.fas.fa-heart").hide(1000);
-  $("i.fas.fa-flag").hide(1000);
-  $("i.fas.fa-retweet").hide(1000);
-
-  $(".tweet").hover(function () {
-    $(this).addClass(".hovertweet");
-    $("i.fas.fa-heart").show(1000);
-    $("i.fas.fa-flag").show(1000);
-    $("i.fas.fa-retweet").show(1000);
-    }, function() {
-      $(this).removeClass(".hovertweet");
-      $("i.fas.fa-heart").hide(1000);
-      $("i.fas.fa-flag").hide(1000);
-      $("i.fas.fa-retweet").hide(1000);
-      });
 
 $(".new-tweet").hide();
 $(".compose").on("click", function (){
@@ -96,10 +100,13 @@ function loadTweets() {
   $.get('http://localhost:8080/tweets')
   .then(tweets => {
     renderTweets(tweets);
+    hoverTweets(tweets);
   });
 }
 
-loadTweets();
-});
+
 
 loadTweets();
+
+});
+
