@@ -65,14 +65,16 @@ $(function() {
   var submitTweet = $('#compose-tweet');
   submitTweet.on('submit', function (event) {
     event.preventDefault();
+    let $$tweet = $("#tweet-text").val();
+    console.log ('This is tweet value: ', $$tweet);
     let newTweetData = $(this).serialize()
-    if (newTweetData === '' || newTweetData === null) {
+    console.log('newTweetData: ', newTweetData);
+    if ($$tweet === '' || $$tweet === null) {
       alert('You did not enter a tweet!');
-    } else if (newTweetData.length > 140) {
+    } else if ($$tweet.length > 140) {
       alert('Your tweet is too long!');
     } else {
       $.post('/tweets', newTweetData);
-      console.log('newTweetData: ', newTweetData);
     }
   });
 });
