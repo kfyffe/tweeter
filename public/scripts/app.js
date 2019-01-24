@@ -72,9 +72,11 @@ $(".new-tweet").slideToggle();
 $("#tweet-text").focus();
 })
 
+$('textarea').on("click", function () {
+  $(".error").text('');
+})
 
-$(function() {
-  var submitTweet = $('#compose-tweet');
+var submitTweet = $('#compose-tweet');
   submitTweet.on('submit', function (event) {
     event.preventDefault();
     let $$tweet = $("#tweet-text").val();
@@ -82,9 +84,9 @@ $(function() {
     let newTweetData = $(this).serialize()
     console.log('newTweetData: ', newTweetData);
     if ($$tweet === '' || $$tweet === null) {
-      alert('You did not enter a tweet!');
+      $(".error").text('You did not enter a tweet!');
     } else if ($$tweet.length > 140) {
-      alert('Your tweet is too long!');
+      $(".error").text('Your tweet is too long!');
     } else {
       $.post('/tweets', newTweetData)
       .then(newTweetData => {
@@ -94,7 +96,6 @@ $(function() {
       })
     }
   });
-});
 
 function loadTweets() {
   $.get('http://localhost:8080/tweets')
@@ -103,8 +104,6 @@ function loadTweets() {
     hoverTweets(tweets);
   });
 }
-
-
 
 loadTweets();
 

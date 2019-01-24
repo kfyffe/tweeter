@@ -24,3 +24,8 @@ textarea {
 .overlimit {
   color: red;
 }
+
+.error {
+  color: red;
+  padding:1px 20px 1px 20px;
+}
