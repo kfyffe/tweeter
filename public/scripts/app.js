@@ -37,11 +37,12 @@ function createTweetElement(tweetData) {
 
 function renderTweets(tweets) {
   console.log('This is tweet: ', tweets);
+  $(".tweet").remove();
   tweets.forEach(tweetData => { // forEach...
     console.log('This is tweetData: ', tweetData);
     let tweetElement = createTweetElement(tweetData); // calls createTweetElement for each tweet
     console.log('This is tweetElement: ', tweetElement);
-    $('.tweet-container').append(tweetElement); // takes return value and appends it to the tweets container
+    $('.tweet-container').prepend(tweetElement); // takes return value and appends it to the tweets container
   });
 }
 
@@ -74,7 +75,10 @@ $(function() {
     } else if ($$tweet.length > 140) {
       alert('Your tweet is too long!');
     } else {
-      $.post('/tweets', newTweetData);
+      $.post('/tweets', newTweetData)
+      .then(newTweetData => {
+        loadTweets(newTweetData);
+      })
     }
   });
 });
@@ -85,6 +89,5 @@ function loadTweets() {
     renderTweets(tweets);
   });
 }
-loadTweets();
 });
 
