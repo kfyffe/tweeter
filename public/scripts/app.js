@@ -62,10 +62,11 @@ function renderTweets(tweets) {
       $("i.fas.fa-retweet").hide(1000);
       });
 
-
+$(".new-tweet").hide();
 $(".compose").on("click", function (){
 $(".new-tweet").slideToggle();
 })
+$(".tweet-text").focus();
 
 $(function() {
   var submitTweet = $('#compose-tweet');
@@ -96,5 +97,8 @@ function loadTweets() {
     renderTweets(tweets);
   });
 }
+
+loadTweets();
 });
 
+loadTweets();
