@@ -77,7 +77,9 @@ $(function() {
     } else {
       $.post('/tweets', newTweetData)
       .then(newTweetData => {
-        loadTweets(newTweetData);
+        $('textarea').val('');
+        $(".tweet-container").empty();
+        loadTweets();
       })
     }
   });
