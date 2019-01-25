@@ -46,6 +46,7 @@ article.tweet img {
   border-radius: 5px;
 }
 article.tweet h1 {
+  font-size: 25px;
   float: left;
 }
 
@@ -56,6 +57,7 @@ article.tweet h3 {
 }
 
 article.tweet p{
+  font-size: 20px;
   background: #ffffff;
   position: relative;
   padding: 1em;

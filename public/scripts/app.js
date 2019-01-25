@@ -13,7 +13,6 @@ function createTweetElement(tweetData) {
   //footer
   let currentTime = Date.now();
   let timeElapsed = currentTime - tweetData.created_at;
-  console.log('Time elapsed is: ', timeElapsed);
   let postDate = $('<span>').text(tweetTracker(timeElapsed)); //variable for the date the tweet was posted
   let heart = $('<i class="fas fa-heart"></i>');
   let flag = $('<i class="fas fa-flag"></i>');
@@ -33,7 +32,6 @@ function hoverTweets(tweets) {
   $(".tweet").hover(function () {
     $(this).addClass("hovertweet");
     $(this).find("i.fas.fa-heart").show(1000);
-    console.log('value of $this: ', $(this))
     $(this).find("i.fas.fa-flag").show(1000);
     $(this).find("i.fas.fa-retweet").show(1000);
     }, function() {
@@ -44,6 +42,7 @@ function hoverTweets(tweets) {
       });
 }
 
+//helper function to determine how long it has been since the tweet post was made.
 function tweetTracker (timeElapsed) {
   let tracker = timeElapsed / 1000;
   let seconds = tracker + ' seconds ago';
@@ -58,21 +57,21 @@ function tweetTracker (timeElapsed) {
   let years = 'over a year ago';
   if (timeElapsed < 60) {
     return seconds;
-  }else if (tracker === 60) {
+  }else if (tracker >= 60 && tracker < 120) {
     return minute;
-  }else if (tracker > 60 && tracker < 3600) {
+  }else if (tracker >= 120 && tracker < 3600) {
     return minutes;
-  }else if (tracker >= 3600 && tracker <= 7199) {
+  }else if (tracker >= 3600 && tracker < 7200) {
     return hour;
   }else if (tracker >= 7200 && tracker < 86400) {
     return hours;
-  }else if (tracker === 86400) {
+  }else if (tracker >= 86400 && tracker < 172800) {
     return day;
-  }else if (tracker > 86400 &&  tracker < 604800) {
+  }else if (tracker >= 172800 && tracker < 604800) {
     return days;
-  }else if (tracker === 604800) {
+  }else if (tracker >= 604800 && tracker < 1209600) {
     return week;
-  }else if (tracker > 604800 &&  tracker < 31536000) {
+  }else if (tracker >= 1209600 &&  tracker < 31536000) {
     return weeks;
   }else {
     return years;
@@ -116,6 +115,8 @@ submitTweet.on('submit', function (event) {
       .then(newTweetData => {
         $('textarea').val('');
         $(".tweet-container").empty();
+        $(".new-tweet").slideUp();
+        $(".counter").html(140);
         loadTweets();
       })
       }
