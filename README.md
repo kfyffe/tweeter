@@ -4,6 +4,9 @@ Tweeter is a simple, single-page Twitter clone.
 
 ## Final Project
 
+!["This is a screenshot of the compose tweet screen"](tweeter/Docs/TweeterComposeScreen.png)
+!["Screenshot of an existing tweet post"](tweeter/Docs/TweeterPost.png)
+
 ## Dependencies
 
 - Express
